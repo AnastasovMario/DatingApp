@@ -18,6 +18,7 @@ public class TokenService(IConfiguration config) : ITokenService
         {
             throw new Exception("Your tokenKey needs to be longer");
         }
+        
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(tokenKey));
 
         var claims = new List<Claim>
