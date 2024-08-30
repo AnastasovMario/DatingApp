@@ -12,7 +12,8 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-4">
-                    <app-register></app-register>
+                    <app-register [usersFromHomeComponent]="users"></app-register> 
+                    <!-- we use [] syntax in order to pass it to a child component -->
                 </div>
             </div>
         </div>
