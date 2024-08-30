@@ -23,6 +23,10 @@ export class HomeComponent implements OnInit {
     this.registerMode = !this.registerMode;
   }
 
+  cancelRegisterMode(event: boolean){
+    this.registerMode = event;
+  }
+
   getUsers(){
     //http get always completes, so we don't have to unsubscribe
     this.http.get('https://localhost:5001/api/users').subscribe({
