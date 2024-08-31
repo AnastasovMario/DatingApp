@@ -4,11 +4,12 @@ import { AccountService } from '../_services/account.service';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { Router, RouterLink, RouterLinkActive } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-nav',
   standalone: true,
-  imports: [FormsModule, BsDropdownModule, RouterLink, RouterLinkActive], //Whenever we want to use an angular feature, we need to import it to the component
+  imports: [FormsModule, BsDropdownModule, RouterLink, RouterLinkActive, TitleCasePipe], //Whenever we want to use an angular feature, we need to import it to the component
   templateUrl: './nav.component.html',
   styleUrl: './nav.component.css'
 })
