@@ -13,7 +13,7 @@ public class ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddlewa
         {
             await next(context);
         }
-        catch (Exception ex)
+        catch (Exception ex)    
         {
             logger.LogError(ex, ex.Message);
             context.Response.ContentType = "application/json";
