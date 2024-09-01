@@ -21,6 +21,7 @@ public static class ApplicationServiceExtensions
 
         services.AddCors();
         services.AddScoped<ITokenService, TokenService>(); //This gives an abstraction and makes the service more testable
+        services.AddScoped<IUserRepository, UserRepository>();
 
         return services;
     }
