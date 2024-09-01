@@ -8,7 +8,9 @@ public class UserRepository(DataContext context) : IUserRepository
 {
     public async Task<IEnumerable<AppUser>> GetUsersAsync()
     {
-        return await context.Users.ToListAsync();
+        return await context.Users
+            .Include(x => x.Photos)
+            .ToListAsync();
     }
 
     public async Task<AppUser?> GetUserByIdAsync(int id)
@@ -18,7 +20,9 @@ public class UserRepository(DataContext context) : IUserRepository
 
     public async Task<AppUser?> GetUserByUsernameAsync(string userName)
     {
-        return await context.Users.SingleOrDefaultAsync();
+        return await context.Users
+            .Include(x => x.Photos)
+            .SingleOrDefaultAsync();
     }
 
     public async Task<bool> SaveAllAsync()

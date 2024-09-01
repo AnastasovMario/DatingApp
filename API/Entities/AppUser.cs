@@ -34,7 +34,7 @@ public class AppUser
 
     public List<Photo> Photos { get; set; } = []; //navigation property from add AppUsers to photos
 
-    public int GetAge()
+    public int GetAge() // We need this name so the Automapper knows to which property to bind to
     {
         return DateOfBirth.CalculateAge();
     }
