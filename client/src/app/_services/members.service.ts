@@ -18,13 +18,7 @@ export class MembersService {
     return this.http.get<Member>(this.baseUrl + 'users/' + username);
   }
 
-  // We do not need this anymore as we are authenticating in the jwt.interceptor
-  // If we are logged in, the token stays in our browser
-  // getHttpOptions() {
-  //   return {
-  //     headers: new HttpHeaders({
-  //       Authorization: `Bearer ${this.accountService.currentUser()?.token}`
-  //     })
-  //   }
-  // }
+  updateMember(member:Member) {
+    return this.http.put(this.baseUrl + 'users', member); // member is the form values from the API
+  }
 }

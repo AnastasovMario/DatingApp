@@ -15,7 +15,7 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class MemberEditComponent implements OnInit {
   @ViewChild('editForm') editForm?: NgForm;
-  @HostListener('window:beforeunload', ['$event']) nofity($event:any) {
+  @HostListener('window:beforeunload', ['$event']) notify($event:any) {
     if (this.editForm?.dirty) {
       $event.returnValue = true;
     }
@@ -27,22 +27,23 @@ export class MemberEditComponent implements OnInit {
   private toastr = inject(ToastrService);
 
   ngOnInit(): void {
-    this.loadMmeber();
+    this.loadMember();
   }
 
-  loadMmeber() {
+  loadMember() {
     const user = this.accountService.currentUser();
-
     if (!user) return;
-
     this.memberService.getMember(user.username).subscribe({
       next: member => this.member = member
     })
   }
 
   updateMember() {
-    console.log(this.member);
-    this.toastr.success('Profile updated successfully');
-    this.editForm?.reset(this.member); //reseting the form to those values contained by the member
+    this.memberService.updateMember(this.editForm?.value).subscribe({
+      next: _ => {
+        this.toastr.success('Profile updated successfully');
+        this.editForm?.reset(this.member);
+      }
+    })
   }
 }

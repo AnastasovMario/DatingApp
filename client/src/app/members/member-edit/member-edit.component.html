@@ -35,11 +35,11 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button 
-                         [disabled]="!editForm.dirty"
-                         type="button" (click)="updateMember()" 
-                         class="btn btn-success col-12">
-                         Save changes
+                    <button
+                        [disabled]="!editForm.dirty"
+                        form="editForm" type="submit"
+                        class="btn btn-success col-12">
+                        Save changes
                     </button>
                 </div>
             </div>      
@@ -48,7 +48,7 @@
         <div class="col-8">
             <tabset class="member-tabset">
                 <tab heading="About {{member.knownAs}}">
-                    <form #editForm="ngForm">
+                    <form id="editForm" #editForm="ngForm" (ngSubmit)="updateMember()">
                         <h4 class="mt-2">Description</h4>
                         <textarea 
                             class="form-control" 
@@ -83,7 +83,7 @@
                             <input type="text" 
                             [(ngModel)]="member.country" 
                             class="form-control mx-2"
-                            name="city"
+                            name="country"
                             >
                         </div>
                     </form>
